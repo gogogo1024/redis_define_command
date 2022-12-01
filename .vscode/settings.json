@@ -1,0 +1,4 @@
+{
+  "cSpell.words": ["cyclomatic", "linebreak", "myclear", "myecho"],
+  "Lua.diagnostics.globals": ["redis", "KEYS", "ARGV"]
+}

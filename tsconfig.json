@@ -1,0 +1,46 @@
+{
+  "compilerOptions": {
+    "preserveConstEnums": true,
+    "outDir": "dist",
+    "sourceMap": true
+  },
+  "include": ["./src/**/*"],
+  "exclude": ["node_modules", "**/*.spec.ts", "test", "dist"],
+  // "watchOptions": {
+  //   // Use native file system events for files and directories
+  //   "watchFile": "useFsEvents",
+  //   "watchDirectory": "useFsEvents",
+  //   // Poll files for updates more frequently
+  //   // when they're updated a lot.
+  //   "fallbackPolling": "dynamicPriority",
+  //   // Don't coalesce watch notification
+  //   "synchronousWatchDirectory": true,
+  //   // Finally, two additional settings for reducing the amount of possible
+  //   // files to track  work from these directories
+  //   "excludeDirectories": ["**/node_modules", "_build"]
+  //   // "excludeFiles": ["build/fileWhichChangesOften.ts"]
+  // },
+  "allowJs": true,
+  // Generate d.ts files
+  "declaration": true,
+  // This compiler run should
+  // only output d.ts files
+  "emitDeclarationOnly": true,
+  // Types should go into this directory.
+  // Removing this would place the .d.ts files
+  // next to the .js files
+  "outDir": "dist",
+  // go to js file when using IDE functions like
+  // "Go to Definition" in VSCode
+  "declarationMap": true,
+  "moduleResolution": "node",
+  "experimentalDecorators": true,
+  "noImplicitThis": true,
+  "noUnusedLocals": true,
+  "noUnusedParameters": true,
+
+  "stripInternal": true,
+  "pretty": true,
+
+  "extends": "@tsconfig/node18/tsconfig.json"
+}
