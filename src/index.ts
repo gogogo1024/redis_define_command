@@ -16,6 +16,12 @@ declare module "ioredis" {
       key: string,
       callback?: Callback<string>
     ): Result<string, Context>;
+    hashtag(
+      number: number,
+      key: string[],
+      argv: string[],
+      callback?: Callback<string>
+    ): Result<string, Context>;
   }
 }
 const cluster = new Redis.Cluster([
@@ -50,16 +56,35 @@ const dirtPath = path.join(process.cwd(), "/src/lua");
   const luaScripts = await luaUtilInstance.getLuaScripts(dirtPath, true);
   luaUtilInstance.luaScriptToRedisCommand(luaScripts);
 
-  console.log("myecho", await cluster.myecho(1, "key", "argv"));
+  const myechoResult = await cluster.myecho(1, "key", "argv");
+  console.log("myecho---await", myechoResult);
 
   cluster.myecho(1, "key1", "argv1", (_, result) => {
-    console.log("callback", result);
+    console.log("myecho---then", result);
   });
 
   cluster.myclear(1, "foo", (_, result) => {
-    console.log("callback", result);
+    console.log("myclear---", result);
   });
-  // TODO
-  // 1. hashtag在集群中的表现
-  // 2. 单例和集群下的lua命令的表现
+  // hashtag在集群中的表现
+  // 下面两个因为是相同的hashtag {userId},所以是被分配到同一个slot
+  // 执行完后可以在redis命令行中查看所在slot
+  cluster.hashtag(
+    2,
+    ["foo{userId}bar", "baz{userId}car"],
+    ["fb", "bc"],
+    (_, result) => {
+      console.log("hashtag---", result);
+    }
+  );
+  cluster.hashtag(
+    2,
+    ["foouserId1bar", "bazuserId2car"],
+    ["fb", "bc"],
+    (_, result) => {
+      console.log("hashtag---", result);
+    }
+  );
+  // TODO: check
+  // 1. 处理相同文件名的lua script
 })();
