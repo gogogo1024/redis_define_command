@@ -25,7 +25,7 @@ function luaExtensionFilter(descriptor: definitionType) {
 /**
  * 过滤lua文件中的注释
  * @param str lua源文件
- * @returns 以过滤注释的lua文件
+ * @returns 已经过滤注释的lua文件
  */
 function stripLuaComments(str: string) {
   const luaCommentsRegex = new RegExp(/d{1,4}g/);

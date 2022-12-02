@@ -63,5 +63,5 @@ const dirtPath = path.join(process.cwd(), "/src/lua");
   });
   // TODO
   // 1. hashtag在集群中的表现
-  // 2. 单例和集群下的lua命令的不凹陷
+  // 2. 单例和集群下的lua命令的表现
 })();
