@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "preserveConstEnums": true,
+    "noUnusedLocals": true,
     "outDir": "dist",
     "sourceMap": true
   },

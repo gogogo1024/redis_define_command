@@ -3,8 +3,6 @@ import * as path from "path";
 
 import Redis, { Callback, Result } from "ioredis";
 import { luaUtil } from "./util/lua";
-const redis = new Redis();
-
 declare module "ioredis" {
   interface RedisCommander<Context> {
     myecho(

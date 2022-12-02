@@ -1,10 +1,9 @@
-import Redis, { Callback, Result, Cluster } from "ioredis";
+import Redis, { Cluster } from "ioredis";
 import * as fs from "fs";
 import * as path from "path";
 type PathLike = fs.PathLike;
 
 const fsPromise = fs.promises;
-const RegexCacheMap: Map<string, Array<string>> = new Map();
 type definitionType = {
   file: string;
   name: string;

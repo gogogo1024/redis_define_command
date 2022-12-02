@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev:build": "npx tsc -w",
     "dev:start": "ts-node ./src/index.ts",
-    "start": "node ./src/index.js"
+    "start": "node ./src/index.js",
+    "build": "rm -rf dist && tsc"
   },
   "keywords": [
     "redis-cluster",
